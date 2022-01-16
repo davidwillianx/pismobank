@@ -6,9 +6,11 @@ import com.example.pismobank.models.OperationType;
 import com.example.pismobank.models.Transaction;
 import com.example.pismobank.repositories.TransactionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+@Service
 @RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
     private static final long OPERATION_PAGAMENTO = 4;
