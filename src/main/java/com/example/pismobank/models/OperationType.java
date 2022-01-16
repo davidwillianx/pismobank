@@ -3,9 +3,7 @@ package com.example.pismobank.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Setter
 @Getter
@@ -13,6 +11,7 @@ import javax.persistence.Table;
 @Table
 public class OperationType {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String description;
 }
