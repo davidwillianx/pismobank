@@ -5,7 +5,7 @@ import com.example.pismobank.models.Account;
 import java.util.Optional;
 
 public interface AccountService {
-    Account create(String documentNumber);
+    Account create(Account account);
 
 
     Optional<Account> searchById(Long id);

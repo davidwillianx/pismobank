@@ -32,14 +32,16 @@ class AccountServiceImplTest {
         @DisplayName("Should return account entity")
         @Test
         void shouldReturnEntity() {
-            Account result = service.create("342342342");
+            Account account = new Account();
+            account.setDocumentNumber("342342342");
+            Account result = service.create(account);
             assertThat(result).isNotNull();
         }
 
         @DisplayName("Should call repository persistence")
         @Test
         void shouldCallRepository() {
-            service.create("334343");
+            service.create(new Account());
             verify(repository).save(any(Account.class));
         }
 
@@ -49,7 +51,7 @@ class AccountServiceImplTest {
             Account account = new Account();
             account.setDocumentNumber("334343");
 
-            service.create("334343");
+            service.create(account);
 
             verify(repository).save(account);
         }

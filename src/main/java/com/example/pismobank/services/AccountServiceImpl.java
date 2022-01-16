@@ -11,10 +11,7 @@ public class AccountServiceImpl implements AccountService {
     private final AccountRepository repository;
 
     @Override
-    public Account create(String documentNumber) {
-        Account account = new Account();
-        account.setDocumentNumber(documentNumber);
-
+    public Account create(Account account) {
         repository.save(account);
 
         return account;
