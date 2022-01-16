@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Table
 @Entity
-public class Transation {
+public class Transaction {
     @Id
     private Long id;
     private BigDecimal amount;
@@ -19,7 +19,7 @@ public class Transation {
 
     @JoinColumn(name = "ACCOUNT_ID")
     @ManyToOne
-    private Account user;
+    private Account account;
 
     @JoinColumn(name = "OPERATION_TYPE_ID")
     @ManyToOne
