@@ -7,5 +7,6 @@ import java.util.Optional;
 public interface AccountService {
     Account create(String documentNumber);
 
-    Optional<Account> serchById(Long id);
+
+    Optional<Account> searchById(Long id);
 }

@@ -21,7 +21,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Optional<Account> serchById(Long id) {
+    public Optional<Account> searchById(Long id) {
         return repository.findById(id);
     }
 }

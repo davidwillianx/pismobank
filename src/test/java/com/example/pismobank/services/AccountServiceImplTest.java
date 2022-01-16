@@ -65,7 +65,7 @@ class AccountServiceImplTest {
             given(repository.findById(2L))
                     .willReturn(Optional.of(new Account()));
 
-            Optional<Account> result = service.serchById(2L);
+            Optional<Account> result = service.searchById(2L);
 
             assertThat(result).isNotEmpty();
         }
@@ -73,7 +73,7 @@ class AccountServiceImplTest {
         @DisplayName("Should call repository")
         @Test
         void shouldCallRepository() {
-            service.serchById(2L);
+            service.searchById(2L);
             verify(repository).findById(2L);
         }
 
@@ -87,7 +87,7 @@ class AccountServiceImplTest {
             given(repository.findById(3L))
                     .willReturn(Optional.of(account));
 
-            Optional<Account> result = service.serchById(3L);
+            Optional<Account> result = service.searchById(3L);
 
             assertThat(result)
                     .isPresent()
