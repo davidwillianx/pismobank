@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Getter
 @Entity
 @Table
-public class OperationTypes {
+public class OperationType {
     @Id
     private Long id;
     private String description;
