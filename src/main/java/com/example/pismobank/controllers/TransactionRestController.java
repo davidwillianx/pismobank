@@ -19,7 +19,7 @@ public class TransactionRestController {
     public Transaction register(@RequestBody TransactionDTO dto) {
         return service.create(
                 dto.getAccountId(),
-                dto.getAccountId(),
+                dto.getOperationTypeId(),
                 dto.getAmount()
         );
     }
