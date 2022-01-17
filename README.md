@@ -6,10 +6,14 @@ Pismobank is a simple sample of a bank-transaction application.
 
 Create a jar file
 
+###unix
 ```bash
 ./mvnw clean package
 ```
-
+###windows
+```bash
+./mvnw.cmd clean package
+```
 Docker
 ```bash
 docker-compose up
