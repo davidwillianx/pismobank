@@ -1,7 +1,7 @@
 package com.example.pismobank.services;
 
 import com.example.pismobank.models.OperationType;
-import com.example.pismobank.repositories.OperatioTypeRepository;
+import com.example.pismobank.repositories.OperationTypeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -16,11 +16,11 @@ import static org.mockito.Mockito.verify;
 
 class OperationTypeServiceImplTest {
     OperationTypeService service;
-    OperatioTypeRepository repository;
+    OperationTypeRepository repository;
 
     @BeforeEach
     void setUp() {
-        repository = mock(OperatioTypeRepository.class);
+        repository = mock(OperationTypeRepository.class);
         service = new OperationTypeServiceImpl(repository);
     }
 
