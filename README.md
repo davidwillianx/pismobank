@@ -19,6 +19,7 @@ Docker
 docker-compose up
 ```
 
+After that the application will be up and running on http://localhost:8080
 
 
 ## Usage
