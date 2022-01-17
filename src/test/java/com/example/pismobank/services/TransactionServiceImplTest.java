@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,17 +29,21 @@ class TransactionServiceImplTest {
     TransactionRepository repository;
     AccountService accountService;
     OperationTypeService operationTypeService;
+    Clock clock;
 
     @BeforeEach
     void setUp() {
         repository = mock(TransactionRepository.class);
         accountService = mock(AccountService.class);
         operationTypeService = mock(OperationTypeService.class);
+        clock = mock(Clock.class);
+
 
         service = new TransactionServiceImpl(
                 repository,
                 accountService,
-                operationTypeService
+                operationTypeService,
+                clock
         );
     }
 
@@ -362,6 +369,69 @@ class TransactionServiceImplTest {
             );
 
             assertThat(result.getAmount()).isPositive();
+        }
+
+        @DisplayName("Should event date not be null")
+        @Test
+        void shouldSetEventDate() {
+            Long accountId = 1L;
+            Long operationTypeId = 4L;
+            BigDecimal amount = BigDecimal.valueOf(200.00);
+
+            OperationType operationType = new OperationType();
+            operationType.setId(4L);
+
+            given(accountService.searchById(1L))
+                    .willReturn(Optional.of(new Account()));
+
+            given(operationTypeService.searchById(4L))
+                    .willReturn(Optional.of(operationType));
+
+            Transaction result = service.create(
+                    accountId,
+                    operationTypeId,
+                    amount
+            );
+
+            assertThat(result.getEventDate()).isNotNull();
+        }
+
+        @DisplayName("Should event date set at current time")
+        @Test
+        void shouldEventDateSetAtCurrentTime() {
+            Long accountId = 1L;
+            Long operationTypeId = 4L;
+            BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+
+            OperationType operationType = new OperationType();
+            operationType.setId(4L);
+
+            given(accountService.searchById(1L))
+                    .willReturn(Optional.of(new Account()));
+
+            given(operationTypeService.searchById(4L))
+                    .willReturn(Optional.of(operationType));
+
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
+
+
+            Transaction result = service.create(
+                    accountId,
+                    operationTypeId,
+                    amount
+            );
+
+            assertThat(result.getEventDate()).isEqualTo(timestamp);
         }
 
     }

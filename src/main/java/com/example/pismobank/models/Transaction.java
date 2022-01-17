@@ -16,6 +16,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private BigDecimal amount;
+
     private LocalDateTime eventDate;
 
     @JoinColumn(name = "ACCOUNT_ID")

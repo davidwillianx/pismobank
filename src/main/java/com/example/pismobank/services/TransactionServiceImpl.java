@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.Clock;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +20,7 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository repository;
     private final AccountService accountService;
     private final OperationTypeService operationTypeService;
+    private final Clock clock;
 
     @Override
     public Transaction create(Long accountId, Long operationTypeId, BigDecimal amount) {
@@ -36,6 +39,7 @@ public class TransactionServiceImpl implements TransactionService {
         BigDecimal amountConsideringOperationType = operationTypeFound.getId() == OPERATION_PAGAMENTO ? amount : amount.negate();
 
         transaction.setAmount(amountConsideringOperationType);
+        transaction.setEventDate(LocalDateTime.now(clock));
 
         repository.save(transaction);
 
