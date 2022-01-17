@@ -35,12 +35,12 @@ POST /accounts - register a new account
    }
   ```
 
-POST /transactions - register a new transaction  ​
-​```
-​{
-​"account_id":1,
-​"operation_type_id": 4,
-​"amount": 230.00   
-​}
-​```
+POST /transactions - register a new transaction  
+   ```
+   {
+     "account_id":1,
+     "operation_type_id": 4,
+     "amount": 230.00   
+   }
+  ```
 
