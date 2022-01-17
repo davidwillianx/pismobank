@@ -1,7 +1,7 @@
 package com.example.pismobank.repositories;
 
 import com.example.pismobank.models.Transaction;
+import org.springframework.data.repository.CrudRepository;
 
-public interface TransactionRepository {
-    void save(Transaction any);
+public interface TransactionRepository extends CrudRepository<Transaction, Long> {
 }
