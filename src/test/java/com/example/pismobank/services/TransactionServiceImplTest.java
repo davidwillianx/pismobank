@@ -50,6 +50,10 @@ class TransactionServiceImplTest {
 
     @Nested
     class CreateTest {
+        @BeforeEach
+        void setUp() {
+
+        }
 
         @DisplayName("Should return entity")
         @Test
@@ -57,6 +61,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(1L);
@@ -66,6 +75,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -82,6 +97,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(2L);
@@ -91,6 +111,13 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
+
 
             service.create(
                     accountId,
@@ -107,6 +134,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(2L);
@@ -116,6 +148,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             service.create(
                     accountId,
@@ -132,6 +170,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(2L);
@@ -141,6 +184,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             service.create(
                     accountId,
@@ -198,6 +247,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(2L);
@@ -207,6 +261,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -223,6 +283,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(1L);
@@ -235,6 +300,13 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
+
 
             Transaction result = service.create(
                     accountId,
@@ -251,6 +323,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(2L);
@@ -260,6 +337,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -276,6 +359,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 3L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(3L);
@@ -285,6 +373,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(3L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -301,6 +395,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 1L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(1L);
@@ -310,6 +409,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(1L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -327,6 +432,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 2L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(2L);
@@ -336,6 +446,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(2L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -352,6 +468,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 4L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(4L);
@@ -361,6 +482,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(4L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -377,6 +504,11 @@ class TransactionServiceImplTest {
             Long accountId = 1L;
             Long operationTypeId = 4L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
+            LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(4L);
@@ -386,6 +518,12 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(4L))
                     .willReturn(Optional.of(operationType));
+
+            given(clock.instant())
+                    .willReturn(fixed.instant());
+
+            given(clock.getZone())
+                    .willReturn(fixed.getZone());
 
             Transaction result = service.create(
                     accountId,
@@ -403,6 +541,10 @@ class TransactionServiceImplTest {
             Long operationTypeId = 4L;
             BigDecimal amount = BigDecimal.valueOf(200.00);
             LocalDateTime timestamp = LocalDateTime.of(2022, 1, 17, 9, 34);
+            Clock fixed = Clock.fixed(
+                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
+                    ZoneId.systemDefault()
+            );
 
             OperationType operationType = new OperationType();
             operationType.setId(4L);
@@ -412,11 +554,6 @@ class TransactionServiceImplTest {
 
             given(operationTypeService.searchById(4L))
                     .willReturn(Optional.of(operationType));
-
-            Clock fixed = Clock.fixed(
-                    timestamp.atZone(ZoneId.systemDefault()).toInstant(),
-                    ZoneId.systemDefault()
-            );
 
             given(clock.instant())
                     .willReturn(fixed.instant());
