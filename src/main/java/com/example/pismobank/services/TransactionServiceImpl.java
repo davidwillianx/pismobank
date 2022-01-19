@@ -1,5 +1,6 @@
 package com.example.pismobank.services;
 
+import com.example.pismobank.errors.TransactionLimitOverpass;
 import com.example.pismobank.errors.TransactionRequirementNotFoundException;
 import com.example.pismobank.models.Account;
 import com.example.pismobank.models.OperationType;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,7 +38,28 @@ public class TransactionServiceImpl implements TransactionService {
 
         transaction.setOperationType(operationTypeFound);
 
-        BigDecimal amountConsideringOperationType = operationTypeFound.getId() == OPERATION_PAGAMENTO ? amount : amount.negate();
+        boolean isCredit = OPERATION_PAGAMENTO == operationTypeFound.getId();
+
+        if (!isCredit) {
+
+            List<Transaction> previousTransactions = repository.findAllByAccountId(accountFound.getId());
+
+            BigDecimal transactionsResult = previousTransactions
+                    .stream()
+                    .map(Transaction::getAmount)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+            BigDecimal remaningLimit = accountFound.getLimit().add(transactionsResult);
+
+            boolean hasLimit = remaningLimit.compareTo(amount) >= 0;
+
+            if (!hasLimit) {
+                throw new TransactionLimitOverpass();
+            }
+
+        }
+
+        BigDecimal amountConsideringOperationType = isCredit ? amount : amount.negate();
 
         transaction.setAmount(amountConsideringOperationType);
         transaction.setEventDate(LocalDateTime.now(clock));
